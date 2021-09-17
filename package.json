@@ -19,6 +19,7 @@
   "author": "Phuc",
   "license": "ISC",
   "dependencies": {
+    "config": "^3.3.6",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
