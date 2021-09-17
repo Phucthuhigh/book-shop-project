@@ -1,0 +1,145 @@
+button {
+	padding: 10px 20px 10px;
+	border: none;
+	background-color: #1D54C1;
+	border-radius: 40px;
+	transition: ease 0.3s;
+	font-family: 'Fira Sans', sans-serif;
+	font-weight: 500;
+	color: white;
+	&:hover {
+		background-color: rgb(41, 56, 185);
+	}
+}
+
+.slideshow {
+	background-color: var(--background);
+	width: 100%;
+	height: 450px;
+	img {
+		margin-top: 2%;
+		height: 100%;
+		overflow: hidden;
+		border-end-end-radius: 100px;
+		border-start-end-radius: 100px;
+	}
+	h1 {
+		display: inline-block;
+		text-align: right;
+		white-space: nowrap;
+	}
+}
+.booklist {
+	margin: 5% auto;
+	width: 85%;
+	background-color: var(--black2);
+	height: 200%;
+	border-radius: 50px;
+}
+.bookcard {
+	display: flex;
+    flex-direction: column;
+    left: 14%;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+	align-items: center;
+	.grid-container {
+		.card {
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+			background-color: var(--black3);
+			a {
+				max-height: 250px;
+				overflow: hidden;
+				img {
+					width: 100%;
+					object-fit: cover;
+				}
+			}
+			.content {
+				a {
+					color: var(--black);
+				}
+				.meta {
+					display: flex;
+					flex-direction: column;
+
+				}
+			}
+		}
+	}
+	.cd-page {
+		margin-bottom: 30px;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		form {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			input {
+				width: 100px;
+				height: 40px;
+				font-size: 30px;
+				outline: none;
+				background-color: var(--background);
+				border: none;
+				border-radius: 30px;
+				color: var(--black);
+				padding: 20px;
+			}
+			ion-icon {
+				font-size: 26px;
+				cursor: pointer;
+				color: var(--black);
+				user-select: none;
+			}
+			i {
+				font-size: 26px;
+				cursor: pointer;
+				color: var(--black);
+				user-select: none;
+				display: flex;
+				align-items: center;
+				margin: 0;
+			}
+		}
+	}
+}
+.h1 {
+	font-family: 'Fira Sans', sans-serif;
+	font-weight: 600;
+	color: var(--blue-dark);
+	font-size: 80px;
+	left: 30%;
+}
+.h5 {
+	font-family: 'Fira Sans', sans-serif;
+	font-weight: 500;
+	color: var(--blue-dark);
+	font-size: 30px;
+}
+.slideshow-title {
+	position: relative;
+	left: 13%;
+	top: 27%;
+}
+.grid-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	max-width: 100%;
+	max-height: 1000px;
+	.card {
+		margin: 60px 10px;
+		position: relative;
+		&:first-child {
+			margin-top: 60px;
+		}
+		&:last-child {
+			margin-bottom: 60px;
+		}
+	}
+}

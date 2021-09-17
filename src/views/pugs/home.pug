@@ -1,0 +1,82 @@
+extends ./layouts/main.pug
+block cssLink
+  link(rel="stylesheet" ,href="/css/home.css")
+block content
+  if (success.length > 0)
+    .alert.alert-success.message #{success}
+
+  if (error.length > 0)
+    .alert.alert-danger.message #{error}
+  .slideshow#home
+    img.slideshow-pic(style='float: left;', src='/img/oddysey.png')
+    .slideshow-title
+      h1.h1 A Novel Idea.
+      h5.h5 Books are an important part of our life.
+      h5.h5 Books are indispensable in our lives.
+  .booklist#buy-books
+    .bookcard
+      .grid-container
+        form#add-to-cart-form(method="POST")
+        if products
+          each product in products
+            .ui.card
+              a.image(href=`/product/${product.slug}`)
+                img(src=product.image)
+              .content
+                a.header(style='text-decoration: none;', href=`/product/${product.slug}`) #{product.name}
+                .meta.mt-3
+                  a.author(style='text-decoration: none;', href='#') author: #{product.author}
+                  a #{product.price}đ
+                  button.btn-add-to-cart.btn.btn-primary.mt-3(data-product-slug=product.slug) Add to cart
+
+      .cd-page
+        form#page-form(method='get')
+          i.angle.double.left.icon
+          ion-icon(name='chevron-back-outline')
+          input(type='number', name="page", value=page || 1, data-lengthProducts=productsLength ? productsLength : 0, readonly)
+          input(type="text", name="query", value=searchInput ? searchInput : "", style="display: none")
+          ion-icon(name='chevron-forward-outline')
+          i.angle.double.right.icon
+  script.
+    let productsLength = $("input[name='page']").attr("data-lengthProducts");
+    let page = parseInt($("input[name='page']").val());
+    let summaryPage = Math.ceil(productsLength / 12);
+
+    $("ion-icon[name='chevron-back-outline']").on('click', function(e) {
+      if (page - 1 <= 0) {
+        page = summaryPage;
+      } else {
+        page--;
+      }
+      $("input[name='page']").val(page);
+      $("#page-form").submit();
+    })
+    $("ion-icon[name='chevron-forward-outline']").on('click', function(e) {
+      let page = parseInt($("input[name='page']").val());
+      if (page + 1 > summaryPage) {
+        page = 1;
+      } else {
+        page++;
+      }
+      $("input[name='page']").val(page);
+      $("#page-form").submit();
+    })
+    $("i.angle.double.right.icon").on("click", function(e) {
+      page = summaryPage;
+      $("input[name='page']").val(page);
+      $("#page-form").submit();
+    })
+    $("i.angle.double.left.icon").on("click", function(e) {
+      page = 1;
+      $("input[name='page']").val(page);
+      $("#page-form").submit();
+    })
+  script.
+    $(() => {
+      $(".btn-add-to-cart").on("click", function(e) {
+        $("#add-to-cart-form").attr({
+          "action": `/products/books/add-to-cart/${$(this).attr("data-product-slug")}?_method=PUT`,
+        })
+        $("#add-to-cart-form").submit()
+      })
+    })

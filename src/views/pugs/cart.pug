@@ -1,0 +1,65 @@
+extends ./layouts/sidebar.pug
+block cssLinkBody
+  link(rel="stylesheet" ,href="/css/cart.css")
+block body
+  form#add-to-cart-form(method="post")
+  form#remove-to-cart-form(method="post")
+
+  if (successAddtoCart.length > 0)
+    .alert.alert-success.message #{successAddtoCart}
+  if (errorAddtoCart.length > 0)
+    .alert.alert-danger.message #{errorAddtoCart}
+  if (successDeleteItem.length > 0)
+    .alert.alert-success.message #{successDeleteItem}
+  if (errorDeleteItem.length > 0)
+    .alert.alert-danger.message #{errorDeleteItem}
+
+  table.table.table-striped
+    thead
+      tr
+        th(scope="col") #
+        th(scope="col") Name
+        th(scope="col") Price
+        th(scope="col") Quantity
+        th(scope="col") Total price
+    tbody
+      if cart.length > 0
+        each item, index in cart
+          tr
+            th= index + 1
+            td
+              a.cd-detail(href=`/product/${item.slug_product}`)= item.name
+            td #{item.price}đ
+            td
+              a.btn-remove-item(style="cursor:pointer",data-product-slug= item ? item.slug_product : "")
+                ion-icon.mr-3(name='remove-outline')
+              span= item.qty
+              a.btn-add-to-cart(style="cursor:pointer",data-product-slug= item ? item.slug_product : "")
+                ion-icon.ml-3(name='add-outline')
+            td #{item.price * item.qty}đ
+      else
+        tr
+          td(colspan="5")
+            .alert.d-flex.justify-content-center(role="alert") You don't have any items in cart.
+              a.ml-1(href="/products/books") Go to shop
+  .dropdown-divider
+  span#total Total: #{user ? (user.cart.items.length == 0 ? 0 : user.cart.totalPrice) : 0}đ
+
+  script.
+    $(() => {
+      $(".btn-add-to-cart").on("click", function(e) {
+        $("#add-to-cart-form").attr({
+          "action": `/products/books/add-to-cart/${$(this).attr("data-product-slug")}?_method=PUT`,
+        })
+        $("#add-to-cart-form").submit()
+      })
+    })
+  script.
+    $(() => {
+      $(".btn-remove-item").on("click", function (e) {
+        $("#remove-to-cart-form").attr({
+          "action": `/products/books/remove-item/${$(this).attr("data-product-slug")}?_method=DELETE`
+        })
+        $("#remove-to-cart-form").submit()
+      })
+    })

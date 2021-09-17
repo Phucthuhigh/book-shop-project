@@ -1,0 +1,91 @@
+.main-header
+  header
+    .left
+      a(href='/')
+        img.logo(src='/img/logo.png', alt='', width="160")
+      nav
+        ul.nav_bar
+          li
+            a(href='/products/books#home')
+              ion-icon(name='home-outline')
+              |  HOME
+          li
+            a(href='/products/books#buy-books')
+              ion-icon(name='pricetags-outline')
+              |  BUY BOOKS
+          li
+            a(href=`/user/my-cart/${user ? user._id : ""}`)
+              ion-icon(name='cart-outline')
+              |  CART
+
+    .right
+      form.ui.icon.input.mr-3.search-form(method="get", action="/products/books/search")
+        input(type='text', placeholder='Search...', name="query", value=searchInput ? searchInput : "")
+        i.circular.search.link.icon
+      if !user
+        .btnBx.not-a-user
+          a.mr-2.btn.btn-primary(href='/user/register') Register
+          a.btn.btn-primary(href='/user/login') Login
+      else
+        .user
+          .dropdown.show
+            .text.btn(type="button", id="dropdownMenuButton", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+              img.ui.avatar.image(src= user ? user.avatarUrl : "")
+              | #{user ? user.name : ""}
+              i.dropdown.icon
+            .dropdown-menu(aria-labelledby='dropdownMenuLink')
+              .dropdown-item
+                a(href=user ? `/user/my-account/${user._id}` : "#")
+                  ion-icon(name='person-outline')
+                  | My account
+              .dropdown-item
+                a(href=`/user/my-cart/${user._id}`) 
+                  ion-icon(name='cart-outline')
+                  | Cart
+              .dropdown-divider
+              .dropdown-item
+                a#btn-logout(href='#')
+                  ion-icon(name='log-out-outline') 
+                  | Sign out
+      button.theme-switch
+        ion-icon(name="moon-outline", class="active")
+        ion-icon(name="sunny-outline")
+
+  .mainmenu(style='text-align: center;')
+    ul.menu
+      li
+        a(href='#') Fantasy
+      li
+        a(href='#') Horror
+      li
+        a(href='#') Classics
+      li
+        a(href='#') Light Novel
+      li
+        a(href='#') Romance
+      li
+        a(href='#') Science Fiction
+      li
+        a(href='#') Cookbook
+script.
+  $("i.circular.search.link.icon").on("click", function(e) {
+
+    $(".search-form").submit();
+  })
+  $("#btn-logout").on("click", () => {
+    document.cookie = "userId=; path=/;";
+    window.location.reload();
+  })
+  window.addEventListener("scroll", (e) => {
+    if (window.scrollY > $("header").outerHeight()) {
+      $(".mainmenu").css({
+        "position": "fixed",
+        "top": `0`,
+      })
+    } else {
+      $(".mainmenu").css({
+        "position": "absolute",
+        "top": `${$("header").outerHeight()}px`
+      })
+    }
+  })

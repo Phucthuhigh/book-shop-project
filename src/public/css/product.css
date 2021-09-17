@@ -1,0 +1,111 @@
+@import "https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&family=Lato:wght@700&family=Open+Sans&display=swap";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0%;
+  max-width: 100%; }
+
+body {
+  background-color: #e1e5f1; }
+
+.logo {
+  height: 50px;
+  width: 150px;
+  cursor: pointer;
+  margin-right: auto; }
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  padding: 22px 10% 1px 10%;
+  background-color: white; }
+
+.nav_bar {
+  list-style: none; }
+  .nav_bar li {
+    display: inline-block;
+    padding: 20px 20px 10px; }
+    .nav_bar li a {
+      transition: ease 0.3s;
+      padding: 0;
+      color: #1D54C1;
+      text-decoration: none;
+      font-family: 'Fira Sans', sans-serif;
+      font-weight: 600;
+      font-size: 18px; }
+      .nav_bar li a:hover {
+        color: cyan; }
+
+button {
+  padding: 10px 20px 10px;
+  border: none;
+  background-color: #1D54C1;
+  border-radius: 40px;
+  transition: ease 0.3s;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 500;
+  color: white; }
+  button:hover {
+    background-color: #2938b9; }
+
+.icon {
+  color: #FFFFFF;
+  border: 2px solid #1D54C1; }
+
+.menu {
+  list-style: none;
+  background-color: #1D54C1;
+  padding: 0 0 0 0; }
+  .menu li {
+    display: inline-block;
+    padding: 7px 45px;
+    transition: ease 0.5s; }
+    .menu li:hover {
+      background-color: aqua; }
+    .menu li:is(:last-child) {
+      border: none; }
+    .menu li a {
+      color: white;
+      text-decoration: none;
+      font-family: 'Fira Sans', sans-serif;
+      font-weight: 200; }
+
+h4 a {
+  text-decoration: none;
+  color: black;
+  padding-left: 8%; }
+
+.booklist {
+  margin: 1% auto;
+  width: 85%;
+  background-color: white;
+  height: 70%;
+  border-radius: 50px; }
+  .booklist h1 {
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 600;
+    font-size: 50px; }
+
+.image {
+  position: relative;
+  left: 5%;
+  top: 10%;
+  height: 80%;
+  max-width: 80%; }
+
+.bookname {
+  position: relative;
+  float: right;
+  top: 10%;
+  right: 30%; }
+
+.author {
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 100;
+  font-size: 15px; }
+
+.pricetag {
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 100;
+  font-size: 35px;
+  color: brown; }

@@ -1,0 +1,26 @@
+.imgBx {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    img {
+        width: 800px;
+        z-index: 2;
+    }
+    .text {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-direction:column;
+        .h1 {
+            font-size: 300px;
+            font-weight: bold;
+        }
+        .h5 {
+            font-size: 30px;
+        }
+        color: var(--black);
+    }
+}

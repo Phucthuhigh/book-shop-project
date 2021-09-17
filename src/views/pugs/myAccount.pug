@@ -1,0 +1,70 @@
+extends ./layouts/sidebar.pug
+block cssLinkBody
+  link(rel="stylesheet" ,href="/css/myAccount.css")
+block body
+  form.imgBox(method='post', action=`/user/update/avatar/${user ? user._id : ""}?_method=PUT`, enctype="multipart/form-data")
+    label.overlay(for="choose-avatar")
+      ion-icon(name='camera-outline')
+    img(src=user ? user.avatarUrl : "")
+    input#choose-avatar(type="file", hidden, name="avatar")
+  .informBox
+    .nameBox
+      h1.h1.title-name Name
+      .textInformBox
+        span.name 
+          | #{user ? user.name : ""}
+          ion-icon.enable-editMode(name='create-outline')
+      .edit-box.edit-nameBox
+        input(type="text", placeholder="Name", value=user ? user.name : "")
+        button.btn.btn-success(data-toggle="modal", data-target="#changeName") Save
+    .emailBox
+      h1.h1.email Email
+      .textInformBox
+        span.email 
+          | #{user ? user.email : ""}
+          ion-icon.enable-editMode(name='create-outline')
+      .edit-box.edit-emailBox
+        input(type="text", placeholder="Email", value=user ? user.email : "")
+        button.btn.btn-success(data-toggle="modal", data-target="#changeEmail") Save
+    if errors
+      each error in errors
+        .alert.alert-danger.mt-3(role='alert')= error
+
+    //- Modal of email
+    #changeEmail.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content.modal-content-email
+          .modal-header
+            h5#exampleModalLabel.modal-title Change email
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') &times;
+          .modal-body
+            form(method='post', action=`/user/update/${user ? user._id : ""}?_method=PUT`)
+              .form-group
+                label.col-form-label(for='password') Current Password:
+                input.current-password.form-control(type='password', placeholder="Password", name="password")
+                input(type="text", name="name", hidden)
+                input(type="text", name="email", hidden)
+          .modal-footer
+            button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button') Save changes
+
+    //- Modal of name
+    #changeName.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content.modal-content-name
+          .modal-header
+            h5#exampleModalLabel.modal-title Change name
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') &times;
+          .modal-body
+            form(method='post', action=`/user/update/${user ? user._id : ""}?_method=PUT`)
+              .form-group
+                label.col-form-label(for='password') Current Password:
+                input.current-password.form-control(type='password', placeholder="Password", name='password')
+                input(type="text", name="name", hidden)
+                input(type="text", name="email", hidden)
+
+          .modal-footer
+            button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button') Save changes

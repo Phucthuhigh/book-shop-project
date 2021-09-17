@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: row; }
+  .container .table {
+    color: var(--black); }
+    .container .table td a.cd-detail {
+      color: var(--black); }
+  .container #total {
+    color: var(--black);
+    margin-bottom: 15px;
+    font-size: 20px;
+    display: block;
+    text-align: right;
+    width: 100%; }

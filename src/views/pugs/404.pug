@@ -1,0 +1,10 @@
+extends ./layouts/main.pug
+
+block cssLink
+  link(rel="stylesheet", href="/css/404.css")
+block content
+  .imgBx
+    .text
+      h1.h1 404
+      h5.h5 Something went wrong.:(
+    img(src="/img/pixeltrue-error-1.png")

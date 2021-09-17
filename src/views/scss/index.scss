@@ -1,0 +1,344 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #fff;
+    --black: #000;
+    --white: #fff;
+}
+
+body {
+    &.dark {
+        --black: #fff;
+        --white: #000;
+        --background: #1b2231;
+    }
+    height: 100vh;
+    background-color: var(--background);
+    transition: 0.3s;
+    position: relative;
+    overflow-x: hidden;
+}
+
+header {
+    padding: 15px 120px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    
+    .navbar {
+        display: flex;
+        flex-direction:row;
+        li.navbar__item {
+            margin: 0 15px;
+            list-style: none;
+            a {
+                padding: 0 !important;
+                border-radius: 50px;
+                padding: 8px 28px;
+                font-size: 20px;
+                text-decoration: none;
+                transition: 0.2s;
+                &:hover {
+                    color: var(--black);
+                }
+            }
+            
+            .theme-switch {
+                position: relative;
+                width: 40px;
+                height: 40px;
+                background-color: var(--black);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                cursor: pointer;
+                outline: none;
+                border: none;
+                transition: 0.3s;
+                ion-icon {
+                    display: none;
+                    color: var(--white);
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+
+    .nav__mobile-btn {
+        display: none;
+        text-decoration: none;
+        outline: none;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        ion-icon[name="menu-outline"] {
+            font-size: 30px;
+            color: var(--black);
+        }
+        .navbar__item {
+            .user {
+                .text {
+
+                    padding: 0 !important;
+                }
+            }
+        }
+    }
+}
+
+.user {
+    .text {
+        color: var(--black);
+    }
+    img {
+        width: 40px !important;
+        height: 40px !important;
+        box-shadow: 0 0 4px #000;
+    }
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: rgba(0,0,0,0.5);
+    animation:fadeIn linear 0.4s;
+}
+.nav__mobile {
+    transform: translateX(100%);
+    z-index: 1000;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 100%;
+    background-color: var(--background);
+    display: flex;
+    justify-content: flex-start;
+    transition: 0.4s ease;
+    .close__mobile-btn {
+        cursor: pointer;
+        ion-icon[name="close-outline"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 35px;
+            color: var(--black);
+        }
+    }
+    .navbar-mobile-list {
+        display: flex;
+        flex-direction:column;
+        align-items:flex-start;
+        margin-left: 25px;
+        margin-top: 90px;
+        li.navbar__item {
+            margin: 50px 0;
+            list-style: none;
+            a {
+                padding: 0 !important;
+                border-radius: 50px;
+                padding: 8px 28px;
+                font-size: 20px;
+                text-decoration: none;
+                transition: 0.2s;
+                &:hover {
+                    color: var(--black);
+                }
+            }
+            
+            .theme-switch {
+                position: relative;
+                width: 40px;
+                height: 40px;
+                background-color: var(--black);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                cursor: pointer;
+                outline: none;
+                border: none;
+                transition: 0.3s;
+                ion-icon {
+                    display: none;
+                    color: var(--white);
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+}
+
+#nav__mobile-input:checked ~ .overlay {
+    display: block;
+}
+#nav__mobile-input:checked ~ .nav__mobile {
+    transform: translateX(0);
+}
+
+.active {
+    display: block !important;
+}
+
+.content {
+    margin-top: 50px;
+    padding: 15px 120px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    align-items: center;
+    .text-content {
+        display:flex;
+        justify-content:center;
+        flex-direction:column;
+        max-width: 465px;
+        color: var(--black);
+        transition: 0.3s;
+        h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+            color: var(--black);
+            transition: 0.3s;
+        }
+        a {
+            border-radius: 50px;
+            color: #fff;
+            margin-top: 25px;
+            padding: 15px 25px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+    }
+    .img-box {
+        img {
+            border-radius: 50px;
+        }
+    }
+}
+
+footer {
+    margin-top: 50px;
+    padding: 15px 120px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    align-items: center;
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        li {
+            margin: 0 15px;
+            list-style: none;
+            ion-icon {
+                font-size: 35px;
+                transition: 0.3s;
+                color: var(--black);
+                &:hover {
+                    transform: translateY(-10px)
+                }
+                &[name="logo-youtube"]:hover {
+                    color: #ff0000;
+                }
+                &[name="logo-twitter"]:hover {
+                    color: #1b9ff1;
+                }
+                &[name="logo-github"]:hover {
+                    color: #000;
+                }
+                &[name="logo-facebook"]:hover {
+                    color: #0340de;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1256px) {
+    .content,header,footer {
+        padding: 15px 20px;
+    }
+}
+
+@media screen and (max-width:1024px){
+    .content {
+        padding: 15px 0;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        .text-content,.text-content h2 {
+            text-align: center;
+        }
+        .text-content h2 {
+            margin-top: 25px;
+        }
+        .img-box {
+            img {
+                width: 100%;
+            }
+        }
+    }
+    ul.navbar {
+        display: none;
+    }
+    ul.navbar-mobile {
+        display: flex;
+    }
+    header .nav__mobile-btn {
+        display: block;
+    }
+    footer {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 815px) {
+    .content {
+        .img-box {
+            img {
+                border-radius: 0;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .nav__mobile {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .navbar-mobile-list {
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-direction:column;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}

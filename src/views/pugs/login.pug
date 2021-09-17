@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js')
+    link(rel='stylesheet', href="/css/login.css")
+  body
+    .container
+      .imgBox
+        img(src="/img/90e8ccbd65038a8f4fcd0ae25f9663fa.jpg")
+      form.login-form(method='POST')
+        h1 Login
+        if errors
+          each error in errors
+            .ui.red.message= error
+        div.input__form
+          label(for="email") Email
+          div.ui.left.icon.input
+            input(type="email", placeholder="Email", id="email", name="email", value=values ? values.email : "")
+            i.envelope.icon
+        div.input__form
+          label(for="password") Password
+          div.ui.left.icon.input
+            input(type="password", placeholder="Password", id="password", name="password", value=values ? values.password : "")
+            i.lock.icon
+        div.input__box
+          div.ui.left.icon.input.checkbox
+            input(type="checkbox", id="remember", name="remember")
+            label(for="remember") Remember me
+        div.input__box
+          div.ui.left.icon.input
+            input(type="submit" value="Login")
+        .input__box
+          span Don't have an account? <a href="/user/register">Sign up</a>

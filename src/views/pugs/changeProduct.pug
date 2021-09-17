@@ -1,0 +1,25 @@
+extends ./layouts/main.pug
+block cssLink
+  link(rel="stylesheet", href="/css/changeProduct.css")
+block content
+  .container
+    .box-content
+      h1.h1.title Update product
+      form.ui.form(method="POST", action=`/product/update/${product ? product.slug : slug}?_method=PUT`, enctype="multipart/form-data")
+        .field
+          label Name
+          input#input-name-product(type='text', name='name', placeholder='Name', value=product ? product.name : (value ? value.name : ""))
+        .field
+          label Price
+          input#input-price-product(type='Number', name='price', placeholder='Price', min="1000", max="1000000000", step="1000", value=product ? product.price : (value ? value.price : ""))
+        .field
+          label Description
+          textarea(name='description', placeholder='Description') #{product ? product.description : (value ? value.description : "")}
+        .field
+          label(for="input-thumbnail-product") Thumbnail
+          input#input-thumbnail-product(type="file", name="thumbnail")
+        button.ui.button(type='submit') Submit
+      if errors
+        .errors.mt-3
+          each error in errors
+            .alert.alert-danger(role='alert')= error

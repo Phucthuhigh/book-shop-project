@@ -1,0 +1,152 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css')
+    script(type='module', src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js')
+    script(nomodule='', src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js')
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css')
+    link(rel="stylesheet", href="css/index.css")
+  body 
+    header
+      a(href="/")
+        img(src="/img/logo.png", width="160")
+      ul.navbar
+        li.navbar__item(style=user ? "display: none" : "")
+          a.button.button-register(href="user/register") Register
+        li.navbar__item(style=user ? "display: none" : "")
+          a.button.button-login(href="user/login") Login
+        li.navbar__item(style=!user ? "display: none" : "")
+          .user
+            .dropdown.show
+              .text.btn(type="button", id="dropdownMenuButton", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+                img.ui.avatar.image(src=user ? user.avatarUrl : "")
+                |       #{user ? user.name : ""}
+                i.dropdown.icon
+              .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                .dropdown-item(href='#')
+                  a(href=user ? `/user/my-account/${user._id}` : "") 
+                    ion-icon(name='person-outline')
+                    | My account
+                .dropdown-item(href='#')
+                  a(href=user ? `/user/my-cart/${user._id}` : "") 
+                    ion-icon(name='cart-outline')
+                    | Cart
+                .dropdown-divider
+                .dropdown-item
+                  a#btn-logout(href='#')
+                    ion-icon(name='log-out-outline') 
+                    | Sign out
+        li.navbar__item
+          button.theme-switch
+            ion-icon(name="moon-outline" class="active")
+            ion-icon(name="sunny-outline")
+      label.nav__mobile-btn(for="nav__mobile-input")
+        ion-icon(name="menu-outline")
+    input(type="checkbox", id="nav__mobile-input", hidden)
+    label.overlay(for="nav__mobile-input")
+    .nav__mobile
+      label.close__mobile-btn(for="nav__mobile-input")
+        ion-icon(name="close-outline")
+      ul.navbar-mobile-list
+        li.navbar__item(style=user ? "display: none" : "")
+          a.button.button-register(href="user/register") Register
+        li.navbar__item(style=user ? "display: none" : "")
+          a.button.button-login(href="user/login") Login
+        li.navbar__item(style=!user ? "display: none" : "")
+          .user
+            .dropdown.show
+              .text.btn(type="button", id="dropdownMenuButton", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+                img.ui.avatar.image(src=user ? user.avatarUrl : "")
+                |       #{user ? user.name : ""}
+                i.dropdown.icon
+              .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                .dropdown-item(href='#')
+                  a(href=user ? `/user/my-account/${user._id}` : "") 
+                    ion-icon(name='person-outline')
+                    | My account
+                .dropdown-item(href='#')
+                  a(href=user ? `/user/my-cart/${user._id}` : "") 
+                    ion-icon(name='cart-outline')
+                    | Cart
+                .dropdown-divider
+                .dropdown-item
+                  a#mobile-btn-logout(href='#')
+                    ion-icon(name='log-out-outline') 
+                    | Sign out
+        li.navbar__item
+          button.theme-switch
+            ion-icon(name="moon-outline", class="active")
+            ion-icon(name="sunny-outline")
+    .content
+      .text-content
+        h2 
+          | A great eye
+          br
+          |  for good books.
+        | Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad fuga, aperiam quidem numquam vero molestias maiores. Consequatur accusantium reiciendis eaque unde? Cumque, consequuntur fuga! Natus sint ea atque voluptatum cum?
+        a.btn.btn-primary.go-to-shop(href="/products/books") Go to shop
+      .img-box
+        img(src="/img/index_img.png" width="550")
+    footer
+      ul
+        li
+          a.btn.btn-link 
+            ion-icon(name="logo-youtube")
+        li
+          a.btn.btn-link 
+            ion-icon(name="logo-twitter")
+        li
+          a.btn.btn-link 
+            ion-icon(name="logo-github")
+        li
+          a.btn.btn-link 
+            ion-icon(name="logo-facebook")
+
+
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
+    script.
+      let themeSwitch = $(".theme-switch");
+      let night = $("ion-icon[name='moon-outline']");
+      let sun = $("ion-icon[name='sunny-outline']");
+      if (localStorage.getItem('active')) {
+        let active = $(`ion-icon[name='${JSON.parse(localStorage.getItem('active'))}']`);
+        active.addClass('active');
+        if (active.attr("name") === night.attr("name")) {
+          sun.removeClass('active');
+          document.body.classList.remove('dark');
+        } else {
+          night.removeClass('active');
+          document.body.classList.add('dark');
+        }
+      }
+      themeSwitch.on("click", function(e) {
+        night.toggleClass("active");
+        sun.toggleClass("active");
+        document.body.classList.toggle("dark");
+        localStorage.setItem("active", JSON.stringify(document.querySelector("button.theme-switch ion-icon.active").getAttribute("name")))
+      })
+    script.
+      $("#btn-logout").on("click", () => {
+        document.cookie = "userId=; path=/;";
+        window.location.reload();
+      })
+      $("#mobile-btn-logout").on("click", () => {
+        document.cookie = "userId=; path=/;";
+        window.location.reload();
+      })
+    script.
+      if (localStorage.getItem("side-bar-item") !== null) {
+        let linkSideBarItem = JSON.parse(localStorage.getItem("link-side-bar-item"));
+        $(".user .dropdown-item:first-child a").attr("href", linkSideBarItem);
+      }
+
+

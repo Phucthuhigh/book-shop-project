@@ -1,0 +1,46 @@
+extends ./layouts/main.pug
+block cssLink
+  link(rel="stylesheet", href="/css/detail.css")
+block content
+  if (success.length > 0)
+    .alert.alert-success.message #{success}
+
+  if (error.length > 0)
+    .alert.alert-danger.message #{error}
+  .content
+    form#add-to-cart-form(method="post")
+    .booklist
+      .imgBx
+        img.image(src=product ? product.image : "", alt='')
+      .bookinform
+        h1.bookinform__item #{product ? product.name : ""}
+        .pricetag.bookinform__item
+          | Price: 
+          span #{product ? product.price : ""}đ
+        .author.bookinform__item
+          span Author:
+            a #{product ? product.author : ""}
+          br
+          span Publisher:
+            a #{product ? product.author : ""}
+        .description
+          span Description:
+            p #{product ? product.description : ""}
+        .btnBox.bookinform__item
+          button.ui.primary.button.buy-now Buy now
+          button.ui.blue.basic.button.btn-add-to-cart(data-product-slug=product ? product.slug : "")
+            i.cart.plus.icon
+            |   Add to cart
+
+  script(type='module', src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js')
+  script(nomodule='', src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js')
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js', integrity='sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj', crossorigin='anonymous')
+  script.
+    $(() => {
+      $(".btn-add-to-cart").on("click", function(e) {
+        $("#add-to-cart-form").attr({
+          "action": `/products/books/add-to-cart/${$(this).attr("data-product-slug")}?_method=PUT`,
+        })
+        $("#add-to-cart-form").submit()
+      })
+    })

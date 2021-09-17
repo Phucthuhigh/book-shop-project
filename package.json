@@ -1,0 +1,42 @@
+{
+  "name": "book-shop",
+  "version": "1.0.0",
+  "description": "Every things in book",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon --inspect src/index.js",
+    "start": "node src/index.js",
+    "watch": "node-sass src/views/scss -o src/public/css -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "book-shop"
+  },
+  "keywords": [
+    "book"
+  ],
+  "author": "Phuc",
+  "license": "ISC",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-flash": "git://github.com/RGBboy/express-flash.git",
+    "express-session": "^1.17.2",
+    "lowdb": "^1.0.0",
+    "md5": "^2.3.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.0.5",
+    "mongoose-delete": "^0.5.4",
+    "mongoose-sequence": "^5.3.1",
+    "mongoose-slug-generator": "^1.0.4",
+    "multer": "^1.4.3",
+    "node-sass": "^6.0.1",
+    "pug": "^3.0.2",
+    "shortid": "^2.2.16"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

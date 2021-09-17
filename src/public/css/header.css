@@ -1,0 +1,119 @@
+.main-header {
+  position: relative;
+  width: 100%;
+  height: 123px;
+  margin-bottom: 50px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
+  .main-header header {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background);
+    width: 100%;
+    padding: 10px 80px; }
+    .main-header header .left {
+      display: flex; }
+      .main-header header .left .logo {
+        cursor: pointer; }
+      .main-header header .left .nav_bar {
+        list-style: none;
+        display: flex;
+        align-items: center; }
+        .main-header header .left .nav_bar li {
+          display: inline-block;
+          margin: 20px 20px 10px; }
+          .main-header header .left .nav_bar li a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: ease 0.3s;
+            padding: 0;
+            color: var(--cyan);
+            text-decoration: none;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 600;
+            font-size: 18px; }
+            .main-header header .left .nav_bar li a:hover {
+              opacity: 0.8; }
+            .main-header header .left .nav_bar li a ion-icon {
+              font-size: 24px;
+              margin-right: 6px; }
+    .main-header header .right {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .main-header header .right .input input {
+        border-radius: 30px;
+        width: 300px;
+        border: 2px solid var(--black);
+        background-color: var(--white);
+        color: var(--black); }
+      .main-header header .right .input i {
+        top: 50% !important;
+        transform: translateY(-50%);
+        color: var(--black);
+        border: 2px solid var(--black); }
+      .main-header header .right .btnBx a {
+        padding: 8px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 30px; }
+      .main-header header .right .user .dropdown .text {
+        color: var(--black); }
+        .main-header header .right .user .dropdown .text img {
+          width: 40px;
+          height: 40px;
+          box-shadow: 0 0 4px #000; }
+      .main-header header .right .user .dropdown .dropdown-menu {
+        z-index: 999999999; }
+        .main-header header .right .user .dropdown .dropdown-menu .dropdown-item a {
+          display: flex;
+          align-items: center; }
+          .main-header header .right .user .dropdown .dropdown-menu .dropdown-item a ion-icon {
+            margin-right: 5px;
+            font-size: 20px; }
+      .main-header header .right button.theme-switch {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        margin-left: 8px;
+        background-color: var(--black);
+        border-radius: 50%;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        transition: 0.3s; }
+        .main-header header .right button.theme-switch ion-icon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          display: none;
+          color: var(--white);
+          font-size: 22px; }
+  .main-header .mainmenu {
+    position: absolute;
+    top: 88.4000015258789px;
+    right: 0;
+    left: 0;
+    z-index: 99; }
+    .main-header .mainmenu .menu {
+      list-style: none;
+      background-color: var(--cyan);
+      padding: 0 0 0 0; }
+      .main-header .mainmenu .menu li {
+        display: inline-block;
+        padding: 7px 45px;
+        cursor: pointer;
+        transition: ease 0.5s; }
+        .main-header .mainmenu .menu li:hover {
+          background-color: var(--hover); }
+        .main-header .mainmenu .menu li:is(:last-child) {
+          border: none; }
+        .main-header .mainmenu .menu li a {
+          color: var(--white);
+          text-decoration: none;
+          font-family: 'Fira Sans', sans-serif;
+          font-weight: 200; }

@@ -1,0 +1,15 @@
+.box-content h1.h1.title {
+  color: var(--black);
+  font-size: 50px;
+  font-weight: 600; }
+
+.box-content form.ui.form .field label {
+  color: var(--black); }
+
+.box-content form.ui.form .field input {
+  background-color: var(--white);
+  color: var(--black); }
+
+.box-content form.ui.form .field textarea {
+  background-color: var(--white);
+  color: var(--black); }

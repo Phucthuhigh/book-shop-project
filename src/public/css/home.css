@@ -1,0 +1,122 @@
+button {
+  padding: 10px 20px 10px;
+  border: none;
+  background-color: #1D54C1;
+  border-radius: 40px;
+  transition: ease 0.3s;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 500;
+  color: white; }
+  button:hover {
+    background-color: #2938b9; }
+
+.slideshow {
+  background-color: var(--background);
+  width: 100%;
+  height: 450px; }
+  .slideshow img {
+    margin-top: 2%;
+    height: 100%;
+    overflow: hidden;
+    border-end-end-radius: 100px;
+    border-start-end-radius: 100px; }
+  .slideshow h1 {
+    display: inline-block;
+    text-align: right;
+    white-space: nowrap; }
+
+.booklist {
+  margin: 5% auto;
+  width: 85%;
+  background-color: var(--black2);
+  height: 200%;
+  border-radius: 50px; }
+
+.bookcard {
+  display: flex;
+  flex-direction: column;
+  left: 14%;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center; }
+  .bookcard .grid-container .card {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: var(--black3); }
+    .bookcard .grid-container .card a {
+      max-height: 250px;
+      overflow: hidden; }
+      .bookcard .grid-container .card a img {
+        width: 100%;
+        object-fit: cover; }
+    .bookcard .grid-container .card .content a {
+      color: var(--black); }
+    .bookcard .grid-container .card .content .meta {
+      display: flex;
+      flex-direction: column; }
+  .bookcard .cd-page {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    width: 100%; }
+    .bookcard .cd-page form {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .bookcard .cd-page form input {
+        width: 100px;
+        height: 40px;
+        font-size: 30px;
+        outline: none;
+        background-color: var(--background);
+        border: none;
+        border-radius: 30px;
+        color: var(--black);
+        padding: 20px; }
+      .bookcard .cd-page form ion-icon {
+        font-size: 26px;
+        cursor: pointer;
+        color: var(--black);
+        user-select: none; }
+      .bookcard .cd-page form i {
+        font-size: 26px;
+        cursor: pointer;
+        color: var(--black);
+        user-select: none;
+        display: flex;
+        align-items: center;
+        margin: 0; }
+
+.h1 {
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 600;
+  color: var(--blue-dark);
+  font-size: 80px;
+  left: 30%; }
+
+.h5 {
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 500;
+  color: var(--blue-dark);
+  font-size: 30px; }
+
+.slideshow-title {
+  position: relative;
+  left: 13%;
+  top: 27%; }
+
+.grid-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  max-height: 1000px; }
+  .grid-container .card {
+    margin: 60px 10px;
+    position: relative; }
+    .grid-container .card:first-child {
+      margin-top: 60px; }
+    .grid-container .card:last-child {
+      margin-bottom: 60px; }

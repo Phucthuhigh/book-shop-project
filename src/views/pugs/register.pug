@@ -1,0 +1,45 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js')
+    link(rel='stylesheet', href="/css/register.css")
+  body
+    .container
+      .imgBox
+        img(src="/img/90e8ccbd65038a8f4fcd0ae25f9663fa.jpg")
+      form.register-form(method='POST')
+        h1 Register
+        if errors
+          each error in errors
+            .ui.red.message= error
+        div.input__form
+          label(for="name") Name
+          div.ui.left.icon.input
+            input(type="text", placeholder="Name", id="name", name="name", value=values ? values.name : "")
+            i.users.icon
+        div.input__form
+          label(for="email") Email
+          div.ui.left.icon.input
+            input(type="email", placeholder="Email", id="email", name="email", value=values ? values.email : "")
+            i.envelope.icon
+        div.input__form
+          label(for="password") Password
+          div.ui.left.icon.input
+            input(type="password", placeholder="Password", id="password", name="password", value=values ? values.password : "")
+            i.lock.icon
+        div.input__form
+          label(for="confirm-password") Confirm Password
+          div.ui.left.icon.input
+            input(type="password", placeholder="Confirm Password", id="confirm-password", name="confirmPassword", value=values ? values.confirmPassword : "")
+            i.lock.icon
+        div.input__box
+          div.ui.left.icon.input
+            input(type="submit" value="Register")
+        .input__box
+          span Have an account? <a href="/user/login">Sign in</a>

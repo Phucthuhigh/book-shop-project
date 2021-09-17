@@ -1,0 +1,45 @@
+extends ./main.pug
+block cssLink
+  link(rel="stylesheet" ,href="/css/sidebar.css")
+  block cssLinkBody
+block content
+  .container
+    .side-bar
+      a.side-bar-item.information.btn.btn-link(href="/user/my-account/" + user._id)
+        ion-icon(name='person-circle-outline')
+        | Information
+      a.side-bar-item.my-products.btn.btn-link(href="/user/my-products/" + user._id)
+        ion-icon(name='cash-outline')
+        | My Products
+      a.side-bar-item.cart.btn.btn-link(href="/user/my-cart/" + user._id)
+        ion-icon(name='cart-outline')
+        | Cart
+    .box-content
+      block body
+  script.
+    $(".enable-editMode").on("click", (e) => {
+      let box = e.target.parentNode.parentNode.parentNode
+      let editBox = box.querySelector(".edit-box");
+      let textInformBox = box.querySelector(".textInformBox");
+      editBox.style.display = "flex";
+      textInformBox.style.display = "none";
+      $(".box-content").on("click", (e) => {
+        if (e.target.className === "box-content") {
+          editBox.style.display = "none";
+          textInformBox.style.display = "flex";
+        }
+      })
+    })
+  script.
+    $(".modal-footer .btn.btn-primary").on("click", function(e) {
+      let nameInput = $(".edit-nameBox input");
+      let emailInput = $(".edit-emailBox input");
+      let modalContent = $(this).parentsUntil(".modal-dialog").slice(-1);
+      modalContent.find(".form-group input[name='name']").val(nameInput.val());
+      modalContent.find(".form-group input[name='email']").val(emailInput.val());
+      modalContent.find(".modal-body form").submit();
+    })
+  script.
+    $("input#choose-avatar").on("change", (e) => {
+      $("form.imgBox").submit();
+    })

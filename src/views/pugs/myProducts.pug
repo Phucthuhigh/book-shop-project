@@ -1,0 +1,56 @@
+extends ./layouts/sidebar.pug
+block cssLinkBody
+  link(rel="stylesheet" ,href="/css/myProducts.css")
+block body
+  form.delete-product
+  table.table.table-striped
+    thead
+      tr
+        th(scope="col") #
+        th(scope="col") Name
+        th(scope="col") Price
+        th(scope="col") Created At
+        th(scope="col") Action
+    tbody
+      if products.length > 0
+        each product, index in products
+          tr
+            th= index + 1
+            td
+              a.cd-detail(href=`/product/${product.slug}`)= product.name
+            td= product.price
+            td= product.createdAt.toLocaleTimeString('en-US')
+            td
+              a.pr-3(href="/product/update/" + product.slug) Change
+              a.data-slug(href="#", data-slug=product.slug, data-toggle="modal", data-target="#exampleModal") Delete
+      else
+        tr
+          td(colspan="5")
+            .alert.d-flex.justify-content-center(role="alert") You don't have any products.
+  a.btn.btn-success(href="/product/create") Add Product
+  #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          h5#exampleModalLabel.modal-title Delete product
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') &times;
+        .modal-body
+          | Do you sure to delete this product?
+        .modal-footer
+          button.delete-btn.btn.btn-danger(type='button') Delete
+          button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+
+  script.
+    let slug
+    $('#exampleModal').on('show.bs.modal', function (event) {
+      const button = $(event.relatedTarget)
+      slug = button.data('slug')
+    })
+    $(".modal-footer button.delete-btn").on('click', function (event) {
+      $("form.delete-product").attr({
+        "action": `/product/delete/${slug}?_method=DELETE`,
+        "method": "POST",
+      })
+      $("form.delete-product").submit();
+    })
