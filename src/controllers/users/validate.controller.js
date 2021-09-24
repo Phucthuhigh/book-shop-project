@@ -59,6 +59,7 @@ class Validation {
     })
       .then((user) => {
         console.log("Sign up successfully");
+        req.flash("success", "Register successfully");
         res.redirect("/user/login");
       })
       .catch(next);
@@ -67,7 +68,7 @@ class Validation {
     if (req.signedCookies.userId) {
       res.redirect("/products/books");
     } else {
-      res.render("login");
+      res.render("login", { success: req.flash("success") });
     }
   }
   checkLoginInput(req, res, next) {
@@ -96,6 +97,9 @@ class Validation {
         }
         next();
       });
+    } else {
+      res.render("login", { errors, values: req.body });
+      return;
     }
   }
   sendLoginInput(req, res) {
@@ -103,6 +107,7 @@ class Validation {
       res.cookie("userId", user._id, {
         signed: true,
       });
+      req.flash("loginSuccess", "Login successfully");
       res.redirect("/products/books");
       console.log("Login sucessfully");
     });

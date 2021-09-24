@@ -55,7 +55,6 @@ User.methods.addItem = async function (product) {
       cart.totalPrice += product.price;
     }
   }
-  // console.log(this);
   return this.save();
 };
 
@@ -76,6 +75,22 @@ User.methods.deleteItem = function (product) {
     }
   }
 
+  return this.save();
+};
+
+User.methods.removeAllItem = function (product) {
+  let cart = this.cart;
+  if (cart.items.length > 0 && cart !== undefined) {
+    let isExist = cart.items.findIndex(
+      (item) => item.slug_product === product.slug
+    );
+    if (isExist !== -1) {
+      if (cart.items[isExist]) {
+        cart.totalPrice -= cart.items[isExist].price * cart.items[isExist].qty;
+        cart.items.splice(isExist, 1);
+      }
+    }
+  }
   return this.save();
 };
 

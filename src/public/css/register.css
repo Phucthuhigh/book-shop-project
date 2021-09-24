@@ -6,23 +6,23 @@
 body {
   overflow-y: hidden; }
 
-.container {
+.container-box {
   display: flex;
   position: relative;
   width: 100%;
   height: 100vh; }
-  .container .imgBox {
+  .container-box .imgBox {
     position: relative;
     width: 50%;
     height: 100%; }
-    .container .imgBox img {
+    .container-box .imgBox img {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover; }
-  .container .register-form {
+  .container-box .register-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,10 +30,10 @@ body {
     width: 50%;
     height: 100%;
     padding: 0 175px; }
-    .container .register-form .red.message {
+    .container-box .register-form .red.message {
       width: 100%;
       border-radius: 30px; }
-    .container .register-form h1 {
+    .container-box .register-form h1 {
       color: #607d8b;
       font-weight: 600;
       font-size: 1.5em;
@@ -42,18 +42,18 @@ body {
       border-bottom: 4px solid #ff4584;
       display: inline-block;
       letter-spacing: 1px; }
-    .container .register-form .input__form {
+    .container-box .register-form .input__form {
       display: flex;
       flex-direction: column;
       margin-bottom: 20px;
       width: 100%; }
-      .container .register-form .input__form label {
+      .container-box .register-form .input__form label {
         color: #607db8;
         font-size: 16px;
         font-weight: 300;
         letter-spacing: 1px;
         margin-bottom: 5px; }
-      .container .register-form .input__form input {
+      .container-box .register-form .input__form input {
         width: 100%;
         height: 50px;
         border-radius: 30px;
@@ -61,11 +61,11 @@ body {
         background-color: transparent;
         border: 1px solid #607d8b;
         color: #607d8b; }
-    .container .register-form .input__box {
+    .container-box .register-form .input__box {
       width: 100%; }
-      .container .register-form .input__box .input {
+      .container-box .register-form .input__box .input {
         width: 100%; }
-        .container .register-form .input__box .input input[type="submit"] {
+        .container-box .register-form .input__box .input input[type="submit"] {
           width: 100%;
           height: 50px;
           border-radius: 30px;
@@ -76,14 +76,32 @@ body {
           padding: 0 !important;
           margin-bottom: 20px;
           cursor: pointer; }
-          .container .register-form .input__box .input input[type="submit"]:hover {
+          .container-box .register-form .input__box .input input[type="submit"]:hover {
             background-color: #f53677; }
-      .container .register-form .input__box span {
+      .container-box .register-form .input__box span {
         color: #607d8b;
         font-size: 16px;
         letter-spacing: 1px; }
-        .container .register-form .input__box span a {
+        .container-box .register-form .input__box span a {
           color: #ff4584; }
+
+.message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000000;
+  animation: slideDown 0.5s ease; }
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%); }
+  to {
+    transform: translateY(0); } }
 
 @media screen and (max-width: 1280px) {
   .container {

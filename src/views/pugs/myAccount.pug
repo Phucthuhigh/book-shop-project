@@ -2,6 +2,10 @@ extends ./layouts/sidebar.pug
 block cssLinkBody
   link(rel="stylesheet" ,href="/css/myAccount.css")
 block body
+  if error.length > 0
+    .alert.alert-danger.message(role='alert')= error
+  if success.length > 0
+    .alert.alert-success.message(role='alert')= success
   form.imgBox(method='post', action=`/user/update/avatar/${user ? user._id : ""}?_method=PUT`, enctype="multipart/form-data")
     label.overlay(for="choose-avatar")
       ion-icon(name='camera-outline')
@@ -26,9 +30,7 @@ block body
       .edit-box.edit-emailBox
         input(type="text", placeholder="Email", value=user ? user.email : "")
         button.btn.btn-success(data-toggle="modal", data-target="#changeEmail") Save
-    if errors
-      each error in errors
-        .alert.alert-danger.mt-3(role='alert')= error
+
 
     //- Modal of email
     #changeEmail.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
@@ -68,3 +70,29 @@ block body
           .modal-footer
             button.btn.btn-secondary(type='button', data-dismiss='modal') Close
             button.btn.btn-primary(type='button') Save changes
+  script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
+  script.
+    $(() => {
+      const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/phucthuhigh'
+      const CLOUDINARY_UPLOAD = 'hkmt584b'
+
+      document.querySelector("input#choose-avatar").addEventListener("change", function(e) {
+        let file = e.target.files[0];
+        let formData = new FormData();
+        formData.append("file",file);
+        formData.append("uploadPreset", CLOUDINARY_UPLOAD);
+
+        axios({
+          url: CLOUDINARY_URL,
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          data: formData,
+        }).then(function (res) {
+          console.log(res);
+        }).catch(function (err) {
+          console.log(err);
+        })
+      })
+    })

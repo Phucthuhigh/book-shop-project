@@ -9,7 +9,7 @@ body {
 }
 
 
-.container {
+.container-box {
     display: flex;
     position: relative;
     width: 100%;
@@ -102,6 +102,30 @@ body {
             }
         }
     }
+}
+
+
+
+.message {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000000;
+	animation: slideDown 0.5s ease
+}
+
+@keyframes slideDown {
+	from {
+		transform: translateY(-100%);
+	}
+	to {
+		transform: translateY(0);
+	}
 }
 
 @media screen and (max-width: 1280px) {

@@ -2,11 +2,16 @@ extends ./layouts/main.pug
 block cssLink
   link(rel="stylesheet" ,href="/css/home.css")
 block content
-  if (success.length > 0)
-    .alert.alert-success.message #{success}
+  if success
+    if (success.length > 0)
+      .alert.alert-success.message #{success}
+  if loginSuccess
+    if (loginSuccess.length > 0)
+      .alert.alert-success.message #{loginSuccess}
 
-  if (error.length > 0)
-    .alert.alert-danger.message #{error}
+  if error
+    if (error.length > 0)
+      .alert.alert-danger.message #{error}
   .slideshow#home
     img.slideshow-pic(style='float: left;', src='/img/oddysey.png')
     .slideshow-title

@@ -16,6 +16,7 @@ class HomeController {
           page,
           productsLength,
           success: req.flash("success"),
+          loginSuccess: req.flash("loginSuccess"),
           error: req.flash("error"),
         });
       });
