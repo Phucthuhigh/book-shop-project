@@ -7,65 +7,72 @@
 .booklist {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   padding: 35px 100px;
   width: 85%;
   background-color: var(--blue-gray);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   height: 75%;
   overflow: auto;
-  border-radius: 50px; }
-  .booklist .imgBx {
-    width: 500px;
-    height: 500px;
-    border-radius: 50px;
-    overflow: hidden; }
-    .booklist .imgBx img {
-      width: 100%; }
-  .booklist .bookinform {
-    float: right;
-    top: 10%;
-    right: 30%;
+  border-radius: 3px; }
+  .booklist .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%; }
+    .booklist .top .imgBx {
+      width: 500px;
+      height: 500px;
+      overflow: hidden; }
+      .booklist .top .imgBx img {
+        width: 100%; }
+    .booklist .top .bookinform {
+      float: right;
+      top: 10%;
+      right: 30%;
+      display: flex;
+      flex-direction: column;
+      color: #000;
+      max-width: 400px; }
+      .booklist .top .bookinform .bookinform__item {
+        padding: 25px 0; }
+      .booklist .top .bookinform h1.bookinform__item {
+        font-size: 40px; }
+      .booklist .top .bookinform .pricetag {
+        padding: 20px 22px;
+        font-size: 40px;
+        font-weight: bold;
+        background: var(--gray);
+        color: var(--black); }
+        .booklist .top .bookinform .pricetag span {
+          font-size: 35px;
+          color: #3B82F6; }
+      .booklist .top .bookinform .author {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        font-size: 20px; }
+        .booklist .top .bookinform .author span {
+          font-weight: bold; }
+          .booklist .top .bookinform .author span a {
+            font-weight: 300;
+            margin-left: 5px;
+            color: #3B82F6; }
+      .booklist .top .bookinform .btnBox {
+        display: flex; }
+        .booklist .top .bookinform .btnBox button {
+          margin-right: 8px; }
+  .booklist .description {
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
-    color: var(--white);
-    width: 350px;
-    max-width: 380px; }
-    .booklist .bookinform .bookinform__item {
-      padding: 25px 0; }
-    .booklist .bookinform h1.bookinform__item {
-      font-size: 60px; }
-    .booklist .bookinform .pricetag {
-      padding: 20px 22px;
-      font-size: 40px;
+    font-size: 20px;
+    color: #000; }
+    .booklist .description span {
       font-weight: bold;
-      background: var(--gray);
-      color: var(--black); }
-      .booklist .bookinform .pricetag span {
-        font-size: 35px;
-        color: #3B82F6; }
-    .booklist .bookinform .author {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      font-size: 20px; }
-      .booklist .bookinform .author span {
-        font-weight: bold; }
-        .booklist .bookinform .author span a {
-          font-weight: 300;
-          margin-left: 5px;
-          color: #3B82F6; }
-    .booklist .bookinform .description {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      font-size: 20px; }
-      .booklist .bookinform .description span {
-        font-weight: bold; }
-        .booklist .bookinform .description span p {
-          display: inline-block;
-          font-weight: 300;
-          margin-left: 5px; }
-    .booklist .bookinform .btnBox {
-      display: flex; }
-      .booklist .bookinform .btnBox button {
-        margin-right: 8px; }
+      margin-bottom: 10px; }
+    .booklist .description p {
+      line-height: 30px;
+      display: block;
+      text-align: left;
+      font-weight: 300; }

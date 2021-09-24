@@ -10,26 +10,27 @@ block content
   .content
     form#add-to-cart-form(method="post")
     .booklist
-      .imgBx
-        img.image(src=product ? product.image : "", alt='')
-      .bookinform
-        h1.bookinform__item #{product ? product.name : ""}
-        .pricetag.bookinform__item
-          | Price: 
-          span #{product ? product.price : ""}đ
-        .author.bookinform__item
-          span.mb-2 Author:
-            a #{product ? product.author : ""}
-          span Publisher:
-            a #{product ? product.author : ""}
-        .description
-          span Description:
-            p #{product ? product.description : ""}
-        .btnBox.bookinform__item
-          button.ui.primary.button.buy-now Buy now
-          button.ui.blue.basic.button.btn-add-to-cart(data-product-slug=product ? product.slug : "")
-            i.cart.plus.icon
-            |   Add to cart
+      .top
+        .imgBx
+          img.image(src=product ? product.image : "", alt='')
+        .bookinform
+          h1.bookinform__item #{product ? product.name : ""}
+          .pricetag.bookinform__item
+            | Price: 
+            span #{product ? product.price : ""}đ
+          .author.bookinform__item
+            span.mb-2 Author:
+              a #{product ? product.author : ""}
+            span Publisher:
+              a #{product ? product.author : ""}
+          .btnBox.bookinform__item
+            button.ui.primary.button.buy-now Buy now
+            button.ui.blue.basic.button.btn-add-to-cart(data-product-slug=product ? product.slug : "")
+              i.cart.plus.icon
+              |   Add to cart
+      .description
+        span Description:
+        p #{product ? product.description : ""}
 
   script(type='module', src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js')
   script(nomodule='', src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js')

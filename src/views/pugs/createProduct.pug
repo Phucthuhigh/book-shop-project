@@ -11,7 +11,7 @@ block content
           input#input-name-product(type='text', name='name', placeholder='Name', value=value ? value.name : '')
         .field
           label Price
-          input#input-price-product(type='Number', name='price', placeholder='Price', min="1000", max="1000000000", step="1000", value=value ? value.price : '')
+          input#input-price-product(type='Number', name='price', placeholder='Price', min="1000", max="1000000000", step="100", value=value ? value.price : '')
         .field
           label Description
           textarea(name='description', value=value ? value.description : '')

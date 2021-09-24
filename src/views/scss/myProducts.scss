@@ -10,6 +10,9 @@
             a.cd-detail {
                 color: var(--black);
             }
+            &:nth-child(2) {
+                max-width: 200px;
+            }
         }
     }
 }

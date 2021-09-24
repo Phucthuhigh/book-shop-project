@@ -7,6 +7,8 @@
     color: var(--black); }
     .container .table td a.cd-detail {
       color: var(--black); }
+    .container .table td:nth-child(2) {
+      max-width: 200px; }
 
 .modal-content {
   background-color: var(--grey);

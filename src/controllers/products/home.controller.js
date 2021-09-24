@@ -6,7 +6,7 @@ class HomeController {
     User.findById(req.signedCookies.userId).then((user) => {
       Product.find({}, (err, products) => {
         let page = req.query.page || 1;
-        let perPage = 12;
+        let perPage = 8;
         let start = (page - 1) * perPage;
         let end = page * perPage;
         let productsLength = products.length;
@@ -38,7 +38,7 @@ class HomeController {
           }
         });
         let page = req.query.page || 1;
-        let perPage = 12;
+        let perPage = 8;
         let start = (page - 1) * perPage;
         let end = page * perPage;
         let productsLength = filterProducts.length;

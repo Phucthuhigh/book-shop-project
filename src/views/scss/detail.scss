@@ -7,81 +7,90 @@
 .booklist {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	flex-direction: column;
 	padding: 35px 100px;
 	width: 85%;
 	background-color: var(--blue-gray);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 	height: 75%;
 	overflow: auto;
-	border-radius: 50px;
-	.imgBx {
-		width: 500px;
-		height: 500px;
-		border-radius: 50px;
-		overflow: hidden;
-		img {
-			width: 100%;
-		}
-	}
-	.bookinform {
-		float: right;
-		top: 10%;
-		right: 30%;
+	border-radius: 3px;
+	.top {
 		display: flex;
-		flex-direction: column;
-		color: var(--white);
-		width: 350px;
-		max-width: 380px;
-		.bookinform__item {
-			padding: 25px 0;
-		}
-		h1.bookinform__item {
-			font-size: 60px;
-		}
-		.pricetag {
-			padding: 20px 22px;
-			font-size: 40px;
-			font-weight: bold;
-			background: var(--gray);
-			color: var(--black);
-			span {
-				font-size: 35px;
-				color: #3B82F6;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 100%;
+		.imgBx {
+			width: 500px;
+			height: 500px;
+			overflow: hidden;
+			img {
+				width: 100%;
 			}
 		}
-		.author {
-			display:flex;
-			justify-content:center;
-			flex-direction:column;
-			font-size: 20px;
-			span {
+		.bookinform {
+			float: right;
+			top: 10%;
+			right: 30%;
+			display: flex;
+			flex-direction: column;
+			color: #000;
+			max-width: 400px;
+			.bookinform__item {
+				padding: 25px 0;
+			}
+			h1.bookinform__item {
+				font-size: 40px;
+			}
+			.pricetag {
+				padding: 20px 22px;
+				font-size: 40px;
 				font-weight: bold;
-				a {
-					font-weight: 300;
-					margin-left: 5px;
+				background: var(--gray);
+				color: var(--black);
+				span {
+					font-size: 35px;
 					color: #3B82F6;
 				}
 			}
-		}
-		.description {
-			display:flex;
-			justify-content:center;
-			flex-direction:column;
-			font-size: 20px;
-			span {
-				font-weight: bold;
-				p {
-					display: inline-block;
-					font-weight: 300;
-					margin-left: 5px;
+			.author {
+				display:flex;
+				justify-content:center;
+				flex-direction:column;
+				font-size: 20px;
+				span {
+					font-weight: bold;
+					a {
+						font-weight: 300;
+						margin-left: 5px;
+						color: #3B82F6;
+					}
+				}
+			}
+			
+			.btnBox {
+				display: flex;
+				button {
+					margin-right: 8px;
 				}
 			}
 		}
-		.btnBox {
-			display: flex;
-			button {
-				margin-right: 8px;
-			}
+	}
+	.description {
+		margin-top: 50px;
+		display:flex;
+		flex-direction:column;
+		font-size: 20px;
+		color: #000;
+		span {
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+		p {
+			line-height: 30px;
+			display: block;
+			text-align: left;
+			font-weight: 300;
 		}
 	}
 }

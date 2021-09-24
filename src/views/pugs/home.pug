@@ -30,7 +30,7 @@ block content
               .content
                 a.header(style='text-decoration: none;', href=`/product/${product.slug}`) #{product.name}
                 .meta.mt-3
-                  a.author(style='text-decoration: none;', href='#') author: #{product.author}
+                  a.author(style='text-decoration: none;', href=`/user/${product.author_id}`) author: #{product.author}
                   a #{product.price}đ
                   button.btn-add-to-cart.btn.btn-primary.mt-3(data-product-slug=product.slug) Add to cart
 
@@ -45,7 +45,7 @@ block content
   script.
     let productsLength = $("input[name='page']").attr("data-lengthProducts");
     let page = parseInt($("input[name='page']").val());
-    let summaryPage = Math.ceil(productsLength / 12);
+    let summaryPage = Math.ceil(productsLength / 8);
 
     $("ion-icon[name='chevron-back-outline']").on('click', function(e) {
       if (page - 1 <= 0) {

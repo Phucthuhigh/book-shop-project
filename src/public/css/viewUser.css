@@ -1,0 +1,46 @@
+.box-content {
+  color: var(--black);
+  width: 80%;
+  height: 800px;
+  background-color: var(--black3);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  overflow-y: auto;
+  margin: auto; }
+  .box-content .avatarBox {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
+    .box-content .avatarBox img {
+      width: 100%;
+      object-fit: cover; }
+  .box-content .informBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .box-content .informBox .nameBox, .box-content .informBox .emailBox {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      .box-content .informBox .nameBox span, .box-content .informBox .emailBox span {
+        letter-spacing: 1px;
+        margin-top: 20px;
+        font-size: 25px; }
+        .box-content .informBox .nameBox span.name, .box-content .informBox .emailBox span.name {
+          font-size: 60px;
+          font-weight: 600; }
+  .box-content .product-table {
+    margin-top: 50px; }
+    .box-content .product-table .product-name {
+      max-width: 200px; }
+      .box-content .product-table .product-name a {
+        color: var(--black); }

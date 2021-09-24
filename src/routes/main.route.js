@@ -9,11 +9,13 @@ const deleteProductRouter = require("./components/products/delete.route");
 const changeProductRouter = require("./components/products/change.route");
 const detailProductRouter = require("./components/products/detail.route");
 const cartRouter = require("./components/users/cart.route");
+const userRouter = require("./components/users/user.route");
 
 function route(app) {
   app.use("/", indexRouter);
   app.use("/", homeRouter);
   app.use("/", searchRouter);
+  app.use("/", userRouter);
   app.use("/", authMiddleware.requireAuth, myAccountRouter);
   app.use("/", authMiddleware.requireAuth, myProductsRouter);
   app.use("/", authMiddleware.requireAuth, createProductRouter);

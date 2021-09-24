@@ -1,5 +1,11 @@
 const User = require("../../databases/models/users");
 const Product = require("../../databases/models/products");
+const cloudinary = require("cloudinary");
+cloudinary.config({
+  cloud_name: "phucthuhigh",
+  api_key: 651455554929685,
+  api_secret: "NRVPsA2-9Fuw6Rcg-ZV-qfN6T04",
+});
 
 class ChangeController {
   renderChangeForm(req, res, next) {
@@ -47,14 +53,16 @@ class ChangeController {
     });
   }
   send(req, res, next) {
-    const { name, price, description, thumbnail } = req.body;
-    Product.updateOne(
-      { slug: req.params.slug },
-      { name, price, description, image: thumbnail },
-      function (err, product) {
-        res.redirect(`/user/my-products/${req.signedCookies.userId}`);
-      }
-    );
+    cloudinary.uploader.upload(req.file.path, (thumbnail) => {
+      const { name, price, description } = req.body;
+      Product.updateOne(
+        { slug: req.params.slug },
+        { name, price, description, image: thumbnail.url },
+        function (err, product) {
+          res.redirect(`/user/my-products/${req.signedCookies.userId}`);
+        }
+      );
+    });
   }
 }
 

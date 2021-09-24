@@ -1,0 +1,33 @@
+extends ./layouts/main.pug
+
+block cssLink
+  link(rel="stylesheet", href="/css/viewUser.css")
+block content
+  .box-content
+    .avatarBox
+      img(src=viewUser.avatarUrl)
+    .informBox
+      .nameBox
+        span.name 
+          | #{viewUser ? viewUser.name : ""}
+      .emailBox
+        span.email 
+          | #{viewUser ? viewUser.email : ""}
+    table.product-table.table.table-striped
+      thead
+        tr
+          th(scope="col") #
+          th(scope="col") Name
+          th(scope="col") Price
+      tbody
+        if products.length > 0
+          each product,index in products
+            tr
+              th(scope="row")= index + 1
+              td.product-name
+                a(href=`/product/${product.slug}`)= product.name
+              td.product-price= product.price
+        else
+          tr
+            td(colspan="3")
+              .alert.d-flex.justify-content-center(role="alert") #{viewUser.name} don't have any products.
