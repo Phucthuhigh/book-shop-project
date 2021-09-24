@@ -43,5 +43,5 @@ route(app);
 
 app.get("/*", authMiddleware.queryIdAuth);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 app.listen(PORT, () => console.log("listening on port " + PORT));
