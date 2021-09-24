@@ -71,28 +71,3 @@ block body
             button.btn.btn-secondary(type='button', data-dismiss='modal') Close
             button.btn.btn-primary(type='button') Save changes
   script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
-  script.
-    $(() => {
-      const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/phucthuhigh'
-      const CLOUDINARY_UPLOAD = 'hkmt584b'
-
-      document.querySelector("input#choose-avatar").addEventListener("change", function(e) {
-        let file = e.target.files[0];
-        let formData = new FormData();
-        formData.append("file",file);
-        formData.append("uploadPreset", CLOUDINARY_UPLOAD);
-
-        axios({
-          url: CLOUDINARY_URL,
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          data: formData,
-        }).then(function (res) {
-          console.log(res);
-        }).catch(function (err) {
-          console.log(err);
-        })
-      })
-    })

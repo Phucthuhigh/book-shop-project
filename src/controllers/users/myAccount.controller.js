@@ -78,17 +78,13 @@ class MyAccount {
       .catch(next);
   }
   updateAvatar(req, res, next) {
-    const form = new Formidable();
-
-    form.parse(req, (err, fields, files) => {
-      cloudinary.uploader.upload(files.avatar.path, (avatar) => {
-        const userId = req.params.id;
-        User.updateOne({ _id: userId }, { avatarUrl: avatar.url })
-          .then(() => {
-            res.redirect(`/user/my-account/${userId}`);
-          })
-          .catch(next);
-      });
+    cloudinary.uploader.upload(req.file.path, (avatar) => {
+      const userId = req.params.id;
+      User.updateOne({ _id: userId }, { avatarUrl: avatar.url })
+        .then(() => {
+          res.redirect(`/user/my-account/${userId}`);
+        })
+        .catch(next);
     });
   }
 }

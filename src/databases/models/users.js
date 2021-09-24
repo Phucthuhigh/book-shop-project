@@ -5,7 +5,11 @@ const User = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  avatarUrl: { type: String, default: "/img/first-avt.png" },
+  avatarUrl: {
+    type: String,
+    default:
+      "https://res.cloudinary.com/phucthuhigh/image/upload/v1632475183/first-avt_wlxpbk.png",
+  },
   cart: {
     items: [
       {

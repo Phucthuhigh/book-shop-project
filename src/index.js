@@ -10,6 +10,7 @@ const cookieParser = require("cookie-parser");
 const methodOverride = require("method-override");
 const session = require("express-session");
 const flash = require("connect-flash");
+const cors = require("cors");
 
 const app = express();
 const db = require("./databases/config/db");
@@ -31,6 +32,7 @@ app.use(
   })
 );
 app.use(flash());
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", page404Router);

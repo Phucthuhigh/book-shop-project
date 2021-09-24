@@ -26,7 +26,8 @@
         color: #fff;
         font-size: 65px; }
     .container .imgBox img {
-      width: 100%; }
+      width: 100%;
+      object-fit: cover; }
   .container .informBox {
     display: flex;
     flex-direction: column;

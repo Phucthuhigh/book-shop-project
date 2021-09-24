@@ -1,5 +1,11 @@
 const User = require("../../databases/models/users");
 const Product = require("../../databases/models/products");
+const cloudinary = require("cloudinary");
+cloudinary.config({
+  cloud_name: "phucthuhigh",
+  api_key: 651455554929685,
+  api_secret: "NRVPsA2-9Fuw6Rcg-ZV-qfN6T04",
+});
 
 class CreateProduct {
   renderCreateForm(req, res, next) {
@@ -28,25 +34,25 @@ class CreateProduct {
     next();
   }
   send(req, res, next) {
-    User.findById(req.signedCookies.userId, (err, user) => {
-      const { name, price, description } = req.body;
-      const thumbnail = req.file
-        ? "/" + req.file.path.split("\\").slice(-3).join("/")
-        : "/img/white-image.png";
-
-      Product.create({
-        name,
-        author: user.name,
-        author_id: user._id,
-        image: thumbnail,
-        price,
-        description,
-      })
-        .then(() => {
-          console.log("Create product successfully");
-          res.redirect("/user/my-products/" + user._id);
+    cloudinary.uploader.upload(req.file.path, (thumbnail) => {
+      User.findById(req.signedCookies.userId, (err, user) => {
+        const { name, price, description } = req.body;
+        Product.create({
+          name,
+          author: user.name,
+          author_id: user._id,
+          image: thumbnail
+            ? thumbnail.url
+            : "https://res.cloudinary.com/phucthuhigh/image/upload/v1632475202/white-image_d7xrv1.png",
+          price,
+          description,
         })
-        .catch(next);
+          .then(() => {
+            console.log("Create product successfully");
+            res.redirect("/user/my-products/" + user._id);
+          })
+          .catch(next);
+      });
     });
   }
 }
