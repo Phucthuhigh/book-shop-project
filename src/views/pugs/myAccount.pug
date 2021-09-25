@@ -6,7 +6,7 @@ block body
     .alert.alert-danger.message(role='alert')= error
   if success.length > 0
     .alert.alert-success.message(role='alert')= success
-  form.imgBox(method='post', action=`/user/update/avatar/${user ? user._id : ""}?_method=PUT`, enctype="multipart/form-data")
+  form.imgBox(method='post', action=`/update/user/avatar/${user ? user._id : ""}?_method=PUT`, enctype="multipart/form-data")
     label.overlay(for="choose-avatar")
       ion-icon(name='camera-outline')
     img(src=user ? user.avatarUrl : "")
@@ -41,7 +41,7 @@ block body
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') &times;
           .modal-body
-            form(method='post', action=`/user/update/${user ? user._id : ""}?_method=PUT`)
+            form(method='post', action=`/update/user/${user ? user._id : ""}?_method=PUT`)
               .form-group
                 label.col-form-label(for='password') Current Password:
                 input.current-password.form-control(type='password', placeholder="Password", name="password")
@@ -59,7 +59,7 @@ block body
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') &times;
           .modal-body
-            form(method='post', action=`/user/update/${user ? user._id : ""}?_method=PUT`)
+            form(method='post', action=`/update/user/${user ? user._id : ""}?_method=PUT`)
               .form-group
                 label.col-form-label(for='password') Current Password:
                 input.current-password.form-control(type='password', placeholder="Password", name='password')

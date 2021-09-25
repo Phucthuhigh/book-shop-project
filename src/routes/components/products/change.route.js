@@ -19,9 +19,9 @@ const upload = multer({
   storage: storage,
 });
 
-router.get("/product/update/:slug", changeController.renderChangeForm);
+router.get("/update/product/:slug", changeController.renderChangeForm);
 router.put(
-  "/product/update/:slug",
+  "/update/product/:slug",
   upload.single("thumbnail"),
   changeController.check,
   changeController.send

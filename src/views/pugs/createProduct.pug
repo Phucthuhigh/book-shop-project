@@ -5,7 +5,7 @@ block content
   .container
     .box-content
       h1.h1.title Add product
-      form.ui.form(method="POST", action="/product/create", enctype="multipart/form-data")
+      form.ui.form(method="POST", action="/create/product", enctype="multipart/form-data")
         .field
           label Name
           input#input-name-product(type='text', name='name', placeholder='Name', value=value ? value.name : '')

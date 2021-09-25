@@ -21,13 +21,13 @@ block body
             td= product.price
             td= product.createdAt.toLocaleTimeString('en-US')
             td
-              a.pr-3(href="/product/update/" + product.slug) Change
+              a.pr-3(href="/update/product/" + product.slug) Change
               a.data-slug(href="#", data-slug=product.slug, data-toggle="modal", data-target="#exampleModal") Delete
       else
         tr
           td(colspan="5")
             .alert.d-flex.justify-content-center(role="alert") You don't have any products.
-  a.btn.btn-success(href="/product/create") Add Product
+  a.btn.btn-success(href="/create/product") Add Product
   #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
     .modal-dialog(role='document')
       .modal-content
@@ -49,7 +49,7 @@ block body
     })
     $(".modal-footer button.delete-btn").on('click', function (event) {
       $("form.delete-product").attr({
-        "action": `/product/delete/${slug}?_method=DELETE`,
+        "action": `/delete/product/${slug}?_method=DELETE`,
         "method": "POST",
       })
       $("form.delete-product").submit();

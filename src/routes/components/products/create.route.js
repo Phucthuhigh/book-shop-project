@@ -19,9 +19,9 @@ const upload = multer({
   storage: storage,
 });
 
-router.get("/product/create", createController.renderCreateForm);
+router.get("/create/product", createController.renderCreateForm);
 router.post(
-  "/product/create",
+  "/create/product",
   upload.single("thumbnail"),
   createController.check,
   createController.send

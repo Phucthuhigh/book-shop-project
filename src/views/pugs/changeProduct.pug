@@ -5,7 +5,7 @@ block content
   .container
     .box-content
       h1.h1.title Update product
-      form.ui.form(method="POST", action=`/product/update/${product ? product.slug : slug}?_method=PUT`, enctype="multipart/form-data")
+      form.ui.form(method="POST", action=`/update/product/${product ? product.slug : slug}?_method=PUT`, enctype="multipart/form-data")
         .field
           label Name
           input#input-name-product(type='text', name='name', placeholder='Name', value=product ? product.name : (value ? value.name : ""))

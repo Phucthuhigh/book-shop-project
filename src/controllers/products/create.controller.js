@@ -34,7 +34,7 @@ class CreateProduct {
     next();
   }
   send(req, res, next) {
-    cloudinary.uploader.upload(req.file.path, (thumbnail) => {
+    cloudinary.uploader.upload(req.file ? req.file.path : "", (thumbnail) => {
       User.findById(req.signedCookies.userId, (err, user) => {
         const { name, price, description } = req.body;
         Product.create({
