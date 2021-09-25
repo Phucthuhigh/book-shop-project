@@ -39,6 +39,11 @@ button {
   width: 100%;
   height: 100%;
   justify-content: space-between; }
+  .bookcard .grid-container .alert {
+    width: 100%;
+    color: var(--black);
+    margin: 50px 0;
+    font-size: 20px; }
   .bookcard .grid-container .card {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     background-color: var(--black3);

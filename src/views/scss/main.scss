@@ -71,6 +71,14 @@ body {
 	animation: slideDown 0.5s ease
 }
 
+::-webkit-scrollbar {
+	width: 5px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: grey;
+	border-radius: 10px;
+}
+
 @keyframes slideDown {
 	from {
 		transform: translateY(-100%);

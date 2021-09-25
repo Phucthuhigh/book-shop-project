@@ -20,9 +20,9 @@ block content
             span #{product ? product.price : ""}đ
           .author.bookinform__item
             span.mb-2 Author:
-              a #{product ? product.author : ""}
+              a(href=`/user/${product.author_id}`) #{product ? product.author : ""}
             span Publisher:
-              a #{product ? product.author : ""}
+              a(href=`/user/${product.author_id}`) #{product ? product.author : ""}
           .btnBox.bookinform__item
             button.ui.primary.button.buy-now Buy now
             button.ui.blue.basic.button.btn-add-to-cart(data-product-slug=product ? product.slug : "")

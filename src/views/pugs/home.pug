@@ -23,16 +23,19 @@ block content
       .grid-container
         form#add-to-cart-form(method="POST")
         if products
-          each product in products
-            .ui.card
-              a.image(href=`/product/${product.slug}`)
-                img(src=product.image)
-              .content
-                a.header(style='text-decoration: none;', href=`/product/${product.slug}`) #{product.name}
-                .meta.mt-3
-                  a.author(style='text-decoration: none;', href=`/user/${product.author_id}`) author: #{product.author}
-                  a #{product.price}đ
-                  button.btn-add-to-cart.btn.btn-primary.mt-3(data-product-slug=product.slug) Add to cart
+          if products.length > 0
+            each product in products
+              .ui.card
+                a.image(href=`/product/${product.slug}`)
+                  img(src=product.image)
+                .content
+                  a.header(style='text-decoration: none;', href=`/product/${product.slug}`) #{product.name}
+                  .meta.mt-3
+                    a.author(style='text-decoration: none;', href=`/user/${product.author_id}`) author: #{product.author}
+                    a #{product.price}đ
+                    button.btn-add-to-cart.btn.btn-primary.mt-3(data-product-slug=product.slug) Add to cart
+          else
+            .alert.d-flex.justify-content-center(role="alert") There is no such product.
 
       .cd-page
         form#page-form(method='get')

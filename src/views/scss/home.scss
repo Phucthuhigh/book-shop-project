@@ -36,6 +36,7 @@ button {
 	height: 200%;
 	border-radius: 5px;
 }
+
 .bookcard {
 	display: flex;
     flex-direction: column;
@@ -44,6 +45,12 @@ button {
     height: 100%;
     justify-content: space-between;
 	.grid-container {
+		.alert {
+			width: 100%;
+			color: var(--black);
+			margin: 50px 0;
+			font-size: 20px;
+		}
 		.card {
 			box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 			background-color: var(--black3);
@@ -111,6 +118,7 @@ button {
 			}
 		}
 	}
+	
 }
 .h1 {
 	font-family: 'Fira Sans', sans-serif;

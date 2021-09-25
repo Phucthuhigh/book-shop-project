@@ -23,9 +23,12 @@
 		.imgBx {
 			width: 500px;
 			height: 500px;
+			display: flex;
+			justify-content: center;
 			overflow: hidden;
 			img {
-				width: 100%;
+				min-width: 66%;
+				max-width: 100%;
 				object-fit: contain;
 			}
 		}

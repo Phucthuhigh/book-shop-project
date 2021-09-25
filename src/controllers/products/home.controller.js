@@ -1,6 +1,11 @@
 const User = require("../../databases/models/users");
 const Product = require("../../databases/models/products");
 
+String.prototype.replaceAll = function (str1, str2) {
+  const newString = this.split(str1).join(str2);
+  return newString;
+};
+
 class HomeController {
   show(req, res) {
     User.findById(req.signedCookies.userId).then((user) => {
@@ -31,8 +36,11 @@ class HomeController {
             return (
               product.name
                 .toLowerCase()
+                .replaceAll(" ", "")
                 .indexOf(
-                  req.query.query ? req.query.query.toLowerCase() : ""
+                  req.query.query
+                    ? req.query.query.toLowerCase().replaceAll(" ", "")
+                    : ""
                 ) != -1
             );
           }
