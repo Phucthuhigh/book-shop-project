@@ -17,7 +17,7 @@ block content
           textarea(name='description', value=value ? value.description : '')
         .field
           label(for="input-thumbnail-product") Thumbnail
-          input#input-thumbnail-product(type="file", name="thumbnail")
+          input#input-thumbnail-product(type="file", name="thumbnail", accept=".jpg, .png, jpeg, .webp")
         button.ui.button(type='submit') Submit
       if errors
         .errors.mt-3

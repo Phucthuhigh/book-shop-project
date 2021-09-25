@@ -27,6 +27,7 @@
         font-size: 65px; }
     .container .imgBox img {
       width: 100%;
+      height: 100%;
       object-fit: cover; }
   .container .informBox {
     display: flex;

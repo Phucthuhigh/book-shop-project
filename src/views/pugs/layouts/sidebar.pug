@@ -34,10 +34,18 @@ block content
     $(".modal-footer .btn.btn-primary").on("click", function(e) {
       let nameInput = $(".edit-nameBox input");
       let emailInput = $(".edit-emailBox input");
-      let modalContent = $(this).parentsUntil(".modal-dialog").slice(-1);
-      modalContent.find(".form-group input[name='name']").val(nameInput.val());
-      modalContent.find(".form-group input[name='email']").val(emailInput.val());
-      modalContent.find(".modal-body form").submit();
+      const modalBox = $(this).parentsUntil(".informBox").slice(-1);
+      const modalId = modalBox.attr("id");
+      const modalContent = $(this).parentsUntil(".modal-dialog").slice(-1);
+      const modalBody = modalContent.children("div.modal-body");
+      const modalInput = modalBody.find("input.modal-input");
+      const modalForm = modalBody.find("form");
+      if (modalId.toLowerCase().indexOf("name") != -1) {
+        modalInput.val(nameInput.val());
+      } else if (modalId.toLowerCase().indexOf("email") != -1) {
+        modalInput.val(emailInput.val());
+      }
+      modalForm.submit();
     })
   script.
     $("input#choose-avatar").on("change", (e) => {

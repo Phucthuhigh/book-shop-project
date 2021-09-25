@@ -22,11 +22,7 @@ router.get(
   authMiddleware.queryIdAuth,
   myAccount.showInformation
 );
-router.put(
-  "/user/update/:id",
-  myAccount.checkPassword,
-  myAccount.updateInformation
-);
+router.put("/user/update/:id", myAccount.check, myAccount.updateInformation);
 router.put(
   "/user/update/avatar/:id",
   upload.single("avatar"),

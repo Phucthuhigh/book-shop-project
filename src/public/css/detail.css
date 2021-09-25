@@ -25,7 +25,8 @@
       height: 500px;
       overflow: hidden; }
       .booklist .top .imgBx img {
-        width: 100%; }
+        width: 100%;
+        object-fit: contain; }
     .booklist .top .bookinform {
       float: right;
       top: 10%;

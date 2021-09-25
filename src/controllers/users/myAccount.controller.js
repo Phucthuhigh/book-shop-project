@@ -20,46 +20,46 @@ class MyAccount {
     });
   }
 
-  checkPassword(req, res, next) {
+  check(req, res, next) {
     const userId = req.params.id;
-    User.findById(userId, (err, user) => {
-      const { name, email } = req.body;
-      const errors = [];
-      const userPassword = md5(req.body.password);
-      if (user) {
-        if (req.body.password !== "") {
-          if (user.password !== userPassword) {
-            errors.push("Your password is incorrect.");
-          }
-        } else {
-          errors.push("the field current password is empty.");
-        }
-        if (name === "") {
-          errors.push("the field name is empty.");
-        }
-        if (email !== "") {
-          const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-          if (!regex.test(email)) {
-            errors.push("You have entered an invalid email address!");
-          }
-        } else {
-          errors.push("the field email is empty.");
+    const errors = [];
+    User.findById(userId, function (err, user) {
+      if (user.password !== md5(req.body.password)) {
+        errors.push("Password incorrect");
+      } else {
+        if (req.body.email) {
+          User.findOne({ email: req.body.email }, function (err, user) {
+            if (user) {
+              errors.push("Email has already existed");
+            }
+            if (errors.length > 0) {
+              req.flash("error", errors[0]);
+              res.redirect("back");
+            } else {
+              req.flash("success", "Change email successfully");
+              next();
+            }
+          });
+        } else if (req.body.name) {
+          User.findOne({ name: req.body.name }, function (err, user) {
+            if (user) {
+              errors.push("Name has already existed");
+            }
+            if (errors.length > 0) {
+              req.flash("error", errors[0]);
+              res.redirect("back");
+            } else {
+              req.flash("success", "Change name successfully");
+              next();
+            }
+          });
         }
       }
-      User.findOne({ email: email }, function (err, user) {
-        if (errors.length == 0) {
-          if (user) {
-            req.flash("error", "Wrong email address or name or password.");
-            res.redirect("back");
-          } else {
-            req.flash("success", "Successfully change email address.");
-            next();
-          }
-        } else {
-          req.flash("error", "Wrong email address or name or password.");
-          res.redirect("back");
-        }
-      });
+
+      if (errors.length > 0) {
+        req.flash("error", errors[0]);
+        res.redirect("back");
+      }
     });
   }
   updateInformation(req, res, next) {

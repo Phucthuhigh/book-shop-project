@@ -49,6 +49,7 @@ button {
       overflow: hidden; }
       .bookcard .grid-container .card a img {
         width: 100%;
+        height: 100%;
         object-fit: cover; }
     .bookcard .grid-container .card .content {
       display: flex;

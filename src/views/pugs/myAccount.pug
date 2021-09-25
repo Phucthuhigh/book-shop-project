@@ -10,7 +10,7 @@ block body
     label.overlay(for="choose-avatar")
       ion-icon(name='camera-outline')
     img(src=user ? user.avatarUrl : "")
-    input#choose-avatar(type="file", hidden, name="avatar")
+    input#choose-avatar(type="file", hidden, name="avatar", accept=".jpg, .png, jpeg, .webp")
   .informBox
     .nameBox
       h1.h1.title-name Name
@@ -45,8 +45,7 @@ block body
               .form-group
                 label.col-form-label(for='password') Current Password:
                 input.current-password.form-control(type='password', placeholder="Password", name="password")
-                input(type="text", name="name", hidden)
-                input(type="text", name="email", hidden)
+                input.modal-input#modal-input-email(type="text", name="email", hidden)
           .modal-footer
             button.btn.btn-secondary(type='button', data-dismiss='modal') Close
             button.btn.btn-primary(type='button') Save changes
@@ -64,10 +63,8 @@ block body
               .form-group
                 label.col-form-label(for='password') Current Password:
                 input.current-password.form-control(type='password', placeholder="Password", name='password')
-                input(type="text", name="name", hidden)
-                input(type="text", name="email", hidden)
+                input.modal-input#modal-input-name(type="text", name="name", hidden)
 
           .modal-footer
             button.btn.btn-secondary(type='button', data-dismiss='modal') Close
             button.btn.btn-primary(type='button') Save changes
-  script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')

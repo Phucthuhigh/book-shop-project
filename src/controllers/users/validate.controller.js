@@ -36,18 +36,20 @@ class Validation {
     } else {
       errors.push("the field password is empty.");
     }
-    User.findOne({ email }, (error, user) => {
-      if (user) {
-        errors.push("This email has already been created.");
-      }
-      if (errors.length > 0) {
-        res.render("register", {
-          errors,
-          values: req.body,
-        });
-        return;
-      }
-      next();
+    User.findOne({ email }, (error, userEmail) => {
+      User.findOne({ name }, (error, userName) => {
+        if (userEmail || userName) {
+          errors.push("Email or name has already been created.");
+        }
+        if (errors.length > 0) {
+          res.render("register", {
+            errors,
+            values: req.body,
+          });
+          return;
+        }
+        next();
+      });
     });
   }
   sendRegisterInput(req, res, next) {
