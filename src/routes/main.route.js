@@ -16,13 +16,13 @@ function route(app) {
   app.use("/", homeRouter);
   app.use("/", searchRouter);
   app.use("/", userRouter);
+  app.use("/", detailProductRouter);
   app.use("/", authMiddleware.requireAuth, myAccountRouter);
   app.use("/", authMiddleware.requireAuth, myProductsRouter);
   app.use("/", authMiddleware.requireAuth, createProductRouter);
   app.use("/", authMiddleware.requireAuth, deleteProductRouter);
   app.use("/", authMiddleware.requireAuth, changeProductRouter);
   app.use("/", authMiddleware.requireAuth, cartRouter);
-  app.use("/", detailProductRouter);
 }
 
 module.exports = route;
